@@ -1,0 +1,20 @@
+.x {
+  position: absolute;
+  top: 0;
+  left: 40vw;
+  padding: 0.5rem;
+}
+
+.blank-sidebar {
+  position: absolute;
+  top: 0;
+}
+
+.sidebar {
+  transition: all 0.5s;
+  -webkit-transition: all 0.25s;
+}
+
+.hiddenSidebar {
+  left: -100%;
+}
