@@ -5,7 +5,6 @@ const axios = require('axios')
 
 const AddProduct = (props) => {
   var storageRef = firebase.storage().ref()
-  const id = props.match.params.id
 
   const { authContext } = useAuth()
 

@@ -127,17 +127,20 @@ const NavBar = () => {
   return (
     <header className="sticky top-0 bg-gray-900 z-10">
       <div className="container sm:items-center">
-        <div className="flex justify-between items-center p-2">
+        <div className="flex items-center p-2">
           <button
-            className="focus:outline-none border-solid border-white border-2 p-2"
+            className="ml-5 focus:outline-none border-solid border-white border-2 p-2"
             onClick={() => sidebarContext.toggleSidebar()}
           >
             <i className="fas fa-bars block fa-2x text-white" />
           </button>
-          <Link to="/">
+          <Link className="text-center w-3/12" to="/">
             <h1 className="text-white text-xl">A2Z</h1>
           </Link>
-          <form className="flex search-bar rounded-md" onSubmit={searchHandler}>
+          <form
+            className="ml-5 flex search-bar rounded-md w-6/12"
+            onSubmit={searchHandler}
+          >
             <select
               name="category"
               className="bg-gray-200 rounded-l-md p-2 w-20"
@@ -154,14 +157,14 @@ const NavBar = () => {
             </select>
             <input
               name="name"
-              className="w-64 py-2 px-3 appearance-none text-black leading-tight outline-none"
+              className="w-8/12 py-2 px-3 appearance-none text-black leading-tight outline-none"
               onChange={onChangeHandler}
             ></input>
             <button className="bg-blue-400 p-2 rounded-r-md">
               <i className="fa fa-search fa-2x"></i>
             </button>
           </form>
-          <Link to="/cart" className="w-24 flex text-white">
+          <Link to="/cart" className="ml-5 w-24 flex text-white">
             <button className="text-white flex cart-wrapper h-8 items-baseline">
               <i className="fa fa-shopping-cart fa-2x" aria-hidden="true"></i>
               <p>Cart</p>
@@ -175,7 +178,7 @@ const NavBar = () => {
             )}
           </Link>
           {authContext.authenticated ? (
-            <div className="relative">
+            <div className="relative ml-5">
               {dropdown && dropdownMenu()}
               <div
                 className="w-24 flex flex cart-wrapper h-8 items-baseline cursor-pointer"
@@ -192,7 +195,7 @@ const NavBar = () => {
           ) : (
             <Link
               to="/login"
-              className="w-24 flex text-white flex cart-wrapper h-8 items-baseline"
+              className="ml-5 w-24 flex text-white flex cart-wrapper h-8 items-baseline"
             >
               <i className="fa fa-user fa-2x mr-2" aria-hidden="true"></i>
               Login
