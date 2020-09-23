@@ -4,6 +4,7 @@
 An ecommerce website that is built using the MERN stack (MongoDB, ExpressJS, ReactJS, NodeJS). Products's images are store in Firebase storage.
 
 # Features:
+- Authentication using JWT
 - Save cart, user data to cookies for future uses.
 - Check role using middlewares.
 - User:
