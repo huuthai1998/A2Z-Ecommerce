@@ -90,7 +90,7 @@ export const AuthProvider = ({ children }) => {
         }
       )
       dispatch({ type: LOGIN_SUCCESS, payload: data })
-      Cookies.set('userInfo', JSON.stringify(data))
+      Cookies.set('userInfo', JSON.stringify(data), { expires: 7 })
     } catch (err) {
       dispatch({ type: LOGIN_FAIL, payload: err.message })
       throw err.message
