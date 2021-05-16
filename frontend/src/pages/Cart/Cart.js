@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
 import { useCart } from 'contexts/cartContext'
 import 'pages/Cart/Cart.css'
 import { useAuth } from 'contexts/authContext'
 const axios = require('axios')
 
 const Cart = () => {
+  const history = useHistory()
   const { authContext } = useAuth()
   const cartContext = useCart()
   const [data, setData] = useState([])
@@ -53,28 +54,33 @@ const Cart = () => {
   var temp = 0
 
   const checkOutHandler = () => {
-    try {
-      axios.post(
-        'https://a2z-ecommerce.herokuapp.com/order',
-        {
-          items: cartContext.items,
-          buyer: authContext.user._id,
-          address,
-          shipment,
-          itemPrice: itemTotal,
-          totalPrice: total,
-          shippingCost: shipment === 'standard' ? 0 : 6.99,
-        },
-        {
-          headers: {
-            Authorization: 'Bearer ' + authContext.user.token,
+    if (authContext.user) {
+      try {
+        axios.post(
+          'https://a2z-ecommerce.herokuapp.com/order',
+          {
+            items: cartContext.items,
+            buyer: authContext.user._id,
+            address,
+            shipment,
+            itemPrice: itemTotal,
+            totalPrice: total,
+            shippingCost: shipment === 'standard' ? 0 : 6.99,
           },
-        }
-      )
-      cartContext.clearCart()
-      alert('Order placed!')
-    } catch (err) {
-      alert(err.response)
+          {
+            headers: {
+              Authorization: 'Bearer ' + authContext.user.token,
+            },
+          }
+        )
+        cartContext.clearCart()
+        alert('Order placed!')
+      } catch (err) {
+        alert(err.response)
+      }
+    } else {
+      alert('Please log in first')
+      history.push('/login')
     }
   }
 

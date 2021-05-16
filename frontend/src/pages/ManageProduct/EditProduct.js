@@ -70,7 +70,7 @@ const EditProduct = (props) => {
       e.preventDefault()
       axios
         .put(
-          `https://a2z-ecommerce.herokuapp.com/${id}`,
+          `https://a2z-ecommerce.herokuapp.com/product/${id}`,
           {
             user: authContext.user,
             product: {
